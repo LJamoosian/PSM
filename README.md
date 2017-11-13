@@ -25,7 +25,7 @@ mcnemar.test(btab,correct = F)
 
 ## Step 3
 Running glm to find significant variables (by checking BIC, AIC, Adjusted R-square,...) and other model selection methods. Another approach is running PCA (Principal Commponent Analysis).
-psmol1=glm(dt$SUCCESS~ MathPlus+GENDER+Ethnicity+URM+AgeYears+Cumulative.GPA+Type,data=dt,family=binomial(link="logit"))
+psmol1=glm(dt$SUCCESS ~ MathPlus+GENDER+Ethnicity+URM+AgeYears+Cumulative.GPA+Type,data=dt,family=binomial(link="logit"))
 summary(psmol1)
 
 
@@ -53,30 +53,30 @@ summary(opm.out3)
 d3=match.data(opm.out3)
 write.xlsx(d3,"D:/opmd3.xls",showNA = F)
 #### Ratio 1:4 treatment :Control
-opm.out4=matchit(MathPlus ~  GENDER+ URM+Cumulative.GPA+ + AgeYears + HighestMathPlacement ,data =dt,
+opm.out4=matchit(MathPlus  ~  GENDER+ URM+Cumulative.GPA+ + AgeYears + HighestMathPlacement ,data =dt,
                 method = "optimal", distance = "logit", ratio=4)
 summary(opm.out4)
 d4=match.data(opm.out4)
 write.xlsx(d4,"D:/opmd4.xls",showNA = F)
 
 ##### ATT (average Treatment effect Treated) for MatchIt Optimal
-ated1=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d1,weights=d1$weights)
+ated1=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d1,weights=d1$weights)
 summary(ated1)
-ated2=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d2,weights=d2$weights)
+ated2=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d2,weights=d2$weights)
 summary(ated2)
-ated3=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d3,weights=d3$weights)
+ated3=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d3,weights=d3$weights)
 summary(ated3)
-ated4=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d4,weights=d4$weights)
+ated4=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d4,weights=d4$weights)
 summary(ated4)
 
 ##### ATT for MatchIt Optimal
-ated1=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d1,weights=d1$weights)
+ated1=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d1,weights=d1$weights)
 summary(ated1)
-ated2=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d2,weights=d2$weights)
+ated2=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d2,weights=d2$weights)
 summary(ated2)
-ated3=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d3,weights=d3$weights)
+ated3=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d3,weights=d3$weights)
 summary(ated3)
-ated4=lm(SUCCESS~MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d4,weights=d4$weights)
+ated4=lm(SUCCESS ~ MathPlus+ GENDER+ URM+Cumulative.GPA + AgeYears + HighestMathPlacement ,data =d4,weights=d4$weights)
 summary(ated4)
 
 ############################# MatchIt ::::: Nearest Neighbor 
