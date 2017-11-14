@@ -104,3 +104,37 @@ mcnemar.test(atab,correct = F)
 d4%>%mutate(test=(SUCCESS-mean(SUCCESS)/sd(SUCCESS)))%>%group_by(MathPlus)%>%summarise(Mean_Int_Alg=mean(test))
 
 
+## Step 6 Plot diagnostics through graphics
+
+plot(opm.out3, type="jitter")
+plot(opm.out3, type="hist")
+plot(opm.out3, type="QQ")
+
+## Step 7 Sensitivity Analysis :: 
+Assess if one's estimated based on matching is robust to the possible presence of an unobserved confounder(key assumption of matching).
+Signed Rank Test is the non-paraM altr to paired t-test and it designed to evaluate comparision in paired data
+how it works? statistics is taking  ranked "absolute differences of paired data" (resistance to outliers and more robust for usual parametric altr)
+
+### Sensitivity Analysis for Optimal of MatchIt packge with Ratio 1:3
+y=d3$SUCCESS
+trt=d3$MathPlus
+ps=glm(trt ~ GENDER+Ethnicity+URM+AgeYears+Cumulative.GPA+Type , data=d3,  family = binomial() )
+match=Match(Y=y, Tr=trt, X=ps$fitted, replace=FALSE)
+
+### Rosenbaum Sensitivity Test for Wilcoxon Signed Rank
+#install.packages("Matching", dependencies = TRUE)
+library(rbounds)
+psens(match, Gamma=2, GammaInc=0.1)
+
+### Sensitivity Analysis for Optimal of MatchIt packge with Ratio 1:1
+y=d1$SUCCESS
+trt=d1$MathPlus
+ps=glm(trt ~ GENDER+Ethnicity+URM+AgeYears+Cumulative.GPA+Type , data=d1,  family = binomial() )
+match=Match(Y=y, Tr=trt, X=ps$fitted, replace=FALSE)
+
+### Rosenbaum Sensitivity Test for Wilcoxon Signed Rank H0= delta=0
+psens(match, Gamma=2, GammaInc=0.1)
+
+## Conclusion: Unconfounded is 0.1241 for first analysis and for second one is 0.5, it means in second data set (d1) the distribution of the data under the null hypothesis satisfies exchangeability.
+
+
