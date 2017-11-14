@@ -141,13 +141,13 @@ psens(match, Gamma=2, GammaInc=0.1)
 hlsens(match, Gamma=1.5, GammaInc = .1,.1)
 
 
-Extra Sources: 
+## Extra Sources: 
 
-#http://www-stat.wharton.upenn.edu/~rosenbap/packpaper.pdf
+http://www-stat.wharton.upenn.edu/~rosenbap/packpaper.pdf
 
-#http://www.mattblackwell.org/files/papers/sens.pdf
+http://www.mattblackwell.org/files/papers/sens.pdf
 
-#https://www.researchgate.net/publication/251969933_An_Overview_of_rbounds_An_R_Package_for_Rosenbaum_Bounds_Sensitivity_Analysis_with_Matched_Data
+https://www.researchgate.net/publication/251969933_An_Overview_of_rbounds_An_R_Package_for_Rosenbaum_Bounds_Sensitivity_Analysis_with_Matched_Data
 
 
 
