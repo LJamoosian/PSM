@@ -135,6 +135,20 @@ match=Match(Y=y, Tr=trt, X=ps$fitted, replace=FALSE)
 ### Rosenbaum Sensitivity Test for Wilcoxon Signed Rank H0= delta=0
 psens(match, Gamma=2, GammaInc=0.1)
 
-## Conclusion: Unconfounded is 0.1241 for first analysis and for second one is 0.5, it means in second data set (d1) the distribution of the data under the null hypothesis satisfies exchangeability.
+## Conclusion:Unconfounded is 0.103 for first analysis and for second one is 0.5, it means in first data set (d3) the distribution of the data under the null hypothesis satisfies exchangeability. There is no hidden bias due to an unobserved confounder
+##### Hodges-Lehmann point estimate
+
+hlsens(match, Gamma=1.5, GammaInc = .1,.1)
+
+
+Extra Sources: 
+
+#http://www-stat.wharton.upenn.edu/~rosenbap/packpaper.pdf
+
+#http://www.mattblackwell.org/files/papers/sens.pdf
+
+#https://www.researchgate.net/publication/251969933_An_Overview_of_rbounds_An_R_Package_for_Rosenbaum_Bounds_Sensitivity_Analysis_with_Matched_Data
+
+
 
 
